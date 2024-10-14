@@ -2,9 +2,19 @@ import logo from './logo.svg';
 import './App.css';
 
 function Header(props) {
-  return <div id="header">
-        <div>{props. title}</div>
-        </div>
+  return (
+    <div id="header">
+      <div>
+        <a href="#" onClick={() => {
+          props.printText();
+          alert("test");
+        }}>
+          {props.title}
+        </a>
+      </div>
+    </div>
+  );
+  
 }
 function Main(props) {
   var list =  [];
@@ -26,7 +36,10 @@ function Main(props) {
       
 function Footer(props) {
   return <div id="Footer">
-      <div>{props.message}</div>
+      <div><a href="#" onClick={()=>{
+        props.printText();
+        alert(props.message);
+      }}>{props.message}</a></div>
     </div>
 }
 
@@ -38,8 +51,12 @@ function App() {
   var subject2 = ["html", "css", "리액트", "mysql"];
   return (
     <>
-      <Header title="자바 재밌다!"></Header>
-      <Header title="오라클 재밌다!"></Header>
+      <Header title="자바 재밌다!" printText={()=>{
+        console.log("함수 보내기 테스트!");
+      }}></Header>
+      <Header title="오라클 재밌다!" printText={()=>{
+        alert("함수 보내기 테스트22222222!");
+      }}></Header>
       <Header title="html 재미없다!"></Header>
 
       <Main list={subject1}></Main>
