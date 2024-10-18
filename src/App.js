@@ -1,22 +1,25 @@
-import React, { createContext, useState } from 'react';
-import Page from './component1018/Page';
+import React, { useReducer } from 'react';
 
-export const LanguageContext = createContext();
+const reducer = (state, action) => {
+  if(action.type === "up") {
+    return state = state + 1;
+  }else if(action.type === " DOWN"){
+    return state = state - 1;
+  }else {
+    return state;
+  }
+}
 
-
-
-function App() {
-  const [language, setLanguage] = useState('ko'); 
-
-  const toggleLanguage = () => {
-    setLanguage(prevLang => (prevLang === 'en' ? 'ko' : 'en'));
-  };
-
+function App(props) {
+  const [number, dispatch] = useReducer(reducer, 10);
   return (
-    <div className="app">
-      <LanguageContext.Provider value={{language, toggleLanguage}}>
-        <Page/>
-      </LanguageContext.Provider>
+    <div>
+    <button onClick={() =>{
+      dispatch({type : "UP"})
+    }}>증가</button>
+    <button onClick={() =>{
+      dispatch({type : "DOWN"})
+    }}>감소</button>
     </div>
   );
 }
