@@ -12,14 +12,15 @@ const reducer = (state, action) => {
 
 function App(props) {
   const [number, dispatch] = useReducer(reducer, 10);
+  const style = {color : 'white', backgroundColor : 'blue'};
   return (
-    <div>
-    <button onClick={() =>{
-      dispatch({type : "UP"})
-    }}>증가</button>
-    <button onClick={() =>{
-      dispatch({type : "DOWN"})
-    }}>감소</button>
+    <div style={style}>
+      <div>{number}</div>
+      <button onClick={() => {
+
+      }}>
+        
+      </button>      
     </div>
   );
 }
